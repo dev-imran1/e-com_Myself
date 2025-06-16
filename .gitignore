@@ -1,1 +1,8 @@
-/node-modules/
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# dotenv
+.env

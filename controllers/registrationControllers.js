@@ -39,16 +39,16 @@ let registrationControllers = async (req, res) => {
       service: "gmail",
       auth: {
         user: "imran.cit.bd@gmail.com",
-        pass: "srta ejor xnkv hktg", 
+        pass: "srta ejor xnkv hktg",
       },
     });
 
-      // Email options
+    // Email options
     const mailOptions = {
-      from: 'imran.cit.bd@gmail.com',
-      to: 'freealltime247@gmail.com',
-      subject: "Registration Successful",
-      html: `<h2>Welcome, ${name}!</h2><p>Your registration was successful.</p>`,
+      from: "freealltime247@gmail.com",
+      to: "imran.cit.bd@gmail.com", 
+      subject: "Verify Your Email Address",
+      html: "verify done",
     };
 
     res.send("User registered successfully");
