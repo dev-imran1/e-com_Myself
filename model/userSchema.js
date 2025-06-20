@@ -22,7 +22,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is required"],
     minlength: [6, "Password must be at least 6 characters long"]
-  }
+  },
+  otp: {
+    type: String,
+    required: [true, "OTP is required"],
+    // minlength: [6, "OTP must be 6 characters long"]
+  },
+  verified: {
+    type: Boolean,
+    default: false
+  },
+  role: {
+    type: String,
+    enum: ["User", "Admin", "Merchant"],
+    default: "User"
+  },
+
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
