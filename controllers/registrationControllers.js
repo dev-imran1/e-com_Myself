@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const otpGenerator = require('otp-generator')
 
 let registrationControllers = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,phone } = req.body;
 
   if (!name) return res.send("Name is required");
   if (!email) return res.send("Email is required");
@@ -32,6 +32,10 @@ let registrationControllers = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      phone,
+      verify: false,
+      role: "User",
+      // Store OTP in the user document 
       otp: otp,
     });
 
@@ -51,8 +55,8 @@ let registrationControllers = async (req, res) => {
 
     // Mail options
     const mailOptions = {
-      from: "freealltime247@gmail.com",
-      to: "imran.cit.bd@gmail.com",
+      from:process.env.EMAIL_HOST,
+      to: email,
       subject: "Verify Your Email Address",
       html: `
         <div style="max-width:600px;margin:auto;background:#fff;border-radius:8px;
